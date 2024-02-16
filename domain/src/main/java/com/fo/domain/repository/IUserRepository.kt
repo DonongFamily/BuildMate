@@ -4,7 +4,7 @@ import com.fo.domain.model.SampleDto
 import com.fo.domain.model.SampleRequest
 import kotlinx.coroutines.flow.Flow
 
-interface ISampleRepository {
+interface IUserRepository {
 
     fun getSample(sampleRequest: SampleRequest): Flow<SampleDto>
 }
