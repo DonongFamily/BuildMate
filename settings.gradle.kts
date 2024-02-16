@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "BuildMate"
 include(":app")
- 
+include(":data")
+include(":domain")
