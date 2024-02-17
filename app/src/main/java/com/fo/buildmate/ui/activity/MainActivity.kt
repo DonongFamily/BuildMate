@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     private fun initMainBinding() = with(mBinding) {
 
         //TODO: remove sample code
-        txt.visibility = View.INVISIBLE
+//        txt.visibility = View.INVISIBLE
         txt.setOnClickListener {
             mainViewModel.getSample()
         }
