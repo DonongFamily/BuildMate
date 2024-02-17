@@ -9,6 +9,7 @@ import com.fo.domain.model.SampleRequest
 import com.fo.domain.usecase.SampleUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -25,12 +26,10 @@ class MainViewModel @Inject constructor(
 
     fun getSample() {
         viewModelScope.launch(Dispatchers.IO) {
-            val result = sampleUseCase.invoke(SampleRequest("hello"))
-            result.onSuccess {
-                _sampleData.postValue(it)
-            }
-            result.onFailure {
+            sampleUseCase.invoke(SampleRequest("hello")).catch {
                 _errorMessage.postValue(it.message)
+            }.collect {
+                _sampleData.postValue(it)
             }
         }
     }
