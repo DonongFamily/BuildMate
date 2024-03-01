@@ -17,6 +17,13 @@ class HomeFragment : Fragment() {
     ): View? {
         mBinding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        mBinding?.apply {
+            btnCategory.setOnClickListener {
+                val categoriesBottomSheetDialogFragment = FilterCategoryFragment()
+                categoriesBottomSheetDialogFragment.show(childFragmentManager, categoriesBottomSheetDialogFragment.tag)
+            }
+        }
+
         return mBinding?.root
     }
 
