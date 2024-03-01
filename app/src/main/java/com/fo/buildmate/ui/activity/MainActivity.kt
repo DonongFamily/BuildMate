@@ -28,7 +28,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(mBinding.root)
 
         initMainBinding()
-        initMainViewModel()
         initTab()
         val intent = Intent(this@MainActivity, LoginActivity::class.java)
         startActivity(intent)
@@ -36,27 +35,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun initMainBinding() = with(mBinding) {
 
-        //TODO: remove sample code
-//        txt.visibility = View.INVISIBLE
-        txt.setOnClickListener {
-            mainViewModel.getSample()
-        }
-    }
-
-    private fun initMainViewModel() = with(mainViewModel) {
-        errorMessage.observe(this@MainActivity) {
-            mBinding.txt.text = it
-        }
-        sampleData.observe(this@MainActivity) {
-            mBinding.txt.text = it.name
-        }
     }
 
     private fun initTab() {
         val adapter = TabViewAdapter(supportFragmentManager, lifecycle)
         mBinding.apply {
             pager.adapter = adapter
-            pager.isUserInputEnabled = false
             TabLayoutMediator(tab, pager) {
                     tabLayout, position ->
                 tabLayout.setIcon(adapter.getPageIcon(position))
@@ -76,14 +60,5 @@ class MainActivity : AppCompatActivity() {
 
             override fun onTabReselected(p0: TabLayout.Tab?) {}
         })
-    }
-
-    private fun setTab(selectedTab: Tab) {
-        val tabIndex = selectedTab.ordinal
-        mBinding.tab.getTabAt(tabIndex)?.icon?.setColorFilter(
-            ContextCompat.getColor(applicationContext, androidx.appcompat.R.color.material_blue_grey_800),
-            PorterDuff.Mode.SRC_IN
-        )
-        mBinding.pager.currentItem = tabIndex
     }
 }

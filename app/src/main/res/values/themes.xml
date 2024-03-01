@@ -3,6 +3,10 @@
     <style name="Base.Theme.BuildMate" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/main</item>
+        <item name="android:textSize">@dimen/default_text_size</item>
+        <item name="android:background">@color/background</item>
+        <item name="android:textColor">@color/main</item>
     </style>
 
     <style name="Theme.BuildMate" parent="Base.Theme.BuildMate" />
