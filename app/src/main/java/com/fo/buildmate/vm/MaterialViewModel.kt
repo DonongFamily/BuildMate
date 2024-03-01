@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.fo.buildmate.errormapper.MaterialErrorMapper
 import com.fo.domain.exception.MaterialException
 import com.fo.domain.model.MaterialDto
 import com.fo.domain.model.MaterialRequest
@@ -11,13 +12,15 @@ import com.fo.domain.usecase.GetMaterialListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.catch
+import kotlinx.coroutines.flow.retry
+import kotlinx.coroutines.flow.retryWhen
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MainViewModel @Inject constructor(
+class MaterialViewModel @Inject constructor(
     private val getMaterialListUseCase: GetMaterialListUseCase,
-//    private val materialErrorMapper: MaterialErrorMapper
+    private val materialErrorMapper: MaterialErrorMapper
 ): ViewModel() {
 
     private val _materialList = MutableLiveData<List<MaterialDto>>()
@@ -29,17 +32,21 @@ class MainViewModel @Inject constructor(
 
     fun getMaterialList(materialRequest: MaterialRequest) {
         viewModelScope.launch(Dispatchers.IO) {
-            getMaterialListUseCase.invoke(materialRequest).catch {
-                when(it) {
+            try {
+                getMaterialListUseCase.invoke(materialRequest)
+                    .retry(3)
+                    .collect {
+                        _materialList.postValue(it)
+                    }
+            } catch (e: Exception) {
+                when(e) {
                     is MaterialException -> {
-//                        _errorMessage.postValue(materialErrorMapper.toErrorMessage(it.material))
+                        _errorMessage.postValue(materialErrorMapper.toErrorMessage(e.material))
                     }
                     else -> {
 
                     }
                 }
-            }.collect {
-                _materialList.postValue(it)
             }
         }
     }

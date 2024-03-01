@@ -35,7 +35,7 @@
                 app:layout_constraintGuide_percent="0.6" />
 
             <TextView
-                android:id="@+id/text_category1"
+                android:id="@+id/txt_category1"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:text="1"
@@ -45,7 +45,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/text_category2"
+                android:id="@+id/txt_category2"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:text="2"
@@ -55,7 +55,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/text_category3"
+                android:id="@+id/txt_category3"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:text="3"

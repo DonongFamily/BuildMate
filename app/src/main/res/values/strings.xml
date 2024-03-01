@@ -8,4 +8,7 @@
 
     <dimen name="default_margin">16dp</dimen>
     <dimen name="max_margin">32dp</dimen>
+
+    <!-- Material Error Message -->
+    <string name="MATERIAL_REQUEST_NAME_IS_EMPTY">요청 값이 비어 있습니다.</string>
 </resources>

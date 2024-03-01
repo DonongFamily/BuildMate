@@ -4,7 +4,6 @@ import android.content.Intent
 import android.graphics.PorterDuff
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import com.fo.buildmate.R
@@ -20,14 +19,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val mBinding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private val mainViewModel: MainViewModel by viewModels()
-
+    private val materialViewModel: MainViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mBinding.root)
 
         initMainBinding()
+        initMaterialViewModel()
         initTab()
         val intent = Intent(this@MainActivity, LoginActivity::class.java)
         startActivity(intent)
@@ -36,10 +35,14 @@ class MainActivity : AppCompatActivity() {
     private fun initMainBinding() = with(mBinding) {
 
     }
+    private fun initMaterialViewModel() = with(materialViewModel) {
+
+    }
 
     private fun initTab() {
         val adapter = TabViewAdapter(supportFragmentManager, lifecycle)
         mBinding.apply {
+
             pager.adapter = adapter
             TabLayoutMediator(tab, pager) {
                     tabLayout, position ->
