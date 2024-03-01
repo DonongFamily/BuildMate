@@ -7,6 +7,7 @@
         <item name="android:textSize">@dimen/default_text_size</item>
         <item name="android:background">@color/background</item>
         <item name="android:textColor">@color/main</item>
+        <item name="android:fontFamily">@font/main</item>
     </style>
 
     <style name="Theme.BuildMate" parent="Base.Theme.BuildMate" />
