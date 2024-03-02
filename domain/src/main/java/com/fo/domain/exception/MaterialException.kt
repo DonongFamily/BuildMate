@@ -1,5 +1,5 @@
 package com.fo.domain.exception
 
-import com.fo.domain.errorcode.Material
+import com.fo.domain.errorcode.MaterialErrorCode
 
-class MaterialException(val material: Material): Exception()
+class MaterialException(val materialErrorCode: MaterialErrorCode): Exception()

@@ -2,16 +2,16 @@ package com.fo.buildmate.errormapper
 
 import android.content.Context
 import com.fo.buildmate.R
-import com.fo.domain.errorcode.Material
+import com.fo.domain.errorcode.MaterialErrorCode
 import javax.inject.Inject
 
 class MaterialErrorMapper @Inject constructor(
     private val context: Context
-): IErrorMapper<Material> {
+): IErrorMapper<MaterialErrorCode> {
 
-    override fun toErrorMessage(enum: Material): String =
-        when(enum) {
-            Material.REQUEST_NAME_IS_EMPTY -> context.getString(R.string.MATERIAL_REQUEST_NAME_IS_EMPTY)
+    override fun toErrorMessage(errorCode: MaterialErrorCode): String =
+        when(errorCode) {
+            MaterialErrorCode.REQUEST_NAME_IS_EMPTY -> context.getString(R.string.MATERIAL_REQUEST_NAME_IS_EMPTY)
 
             else -> "UNDEFINED"
         }

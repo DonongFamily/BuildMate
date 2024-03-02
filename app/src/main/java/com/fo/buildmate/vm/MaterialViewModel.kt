@@ -11,9 +11,7 @@ import com.fo.domain.model.MaterialRequest
 import com.fo.domain.usecase.GetMaterialListUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.retry
-import kotlinx.coroutines.flow.retryWhen
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -41,7 +39,7 @@ class MaterialViewModel @Inject constructor(
             } catch (e: Exception) {
                 when(e) {
                     is MaterialException -> {
-                        _errorMessage.postValue(materialErrorMapper.toErrorMessage(e.material))
+                        _errorMessage.postValue(materialErrorMapper.toErrorMessage(e.materialErrorCode))
                     }
                     else -> {
 

@@ -2,5 +2,5 @@ package com.fo.buildmate.errormapper
 
 interface IErrorMapper<T> {
 
-    fun toErrorMessage(enum: T): String
+    fun toErrorMessage(errorCode: T): String
 }

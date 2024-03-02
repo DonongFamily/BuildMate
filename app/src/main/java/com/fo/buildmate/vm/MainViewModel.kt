@@ -16,31 +16,6 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MainViewModel @Inject constructor(
-    private val getMaterialListUseCase: GetMaterialListUseCase,
-//    private val materialErrorMapper: MaterialErrorMapper
 ): ViewModel() {
 
-    private val _materialList = MutableLiveData<List<MaterialDto>>()
-    val materialList: LiveData<List<MaterialDto>> get() = _materialList
-
-
-    private val _errorMessage = MutableLiveData<String>()
-    val errorMessage: LiveData<String> get() = _errorMessage
-
-    fun getMaterialList(materialRequest: MaterialRequest) {
-        viewModelScope.launch(Dispatchers.IO) {
-            getMaterialListUseCase.invoke(materialRequest).catch {
-                when(it) {
-                    is MaterialException -> {
-//                        _errorMessage.postValue(materialErrorMapper.toErrorMessage(it.material))
-                    }
-                    else -> {
-
-                    }
-                }
-            }.collect {
-                _materialList.postValue(it)
-            }
-        }
-    }
 }
