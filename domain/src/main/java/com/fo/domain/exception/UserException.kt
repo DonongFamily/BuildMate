@@ -1,3 +1,5 @@
 package com.fo.domain.exception
 
-class UserException: Exception()
+import com.fo.domain.errorcode.UserErrorCode
+
+class UserException(val userErrorCode: UserErrorCode): Exception()

@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_percent="0.5" />
+            app:layout_constraintGuide_percent="0.6" />
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/guide_bottom"
@@ -31,7 +31,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="환영 합니다 해위"
+            android:text="@string/login_title_text"
             android:textSize="40dp"
             app:layout_constraintBottom_toTopOf="@id/guide_center"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -53,16 +53,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="구글 로그인"
-            app:layout_constraintBottom_toBottomOf="@id/guide_bottom"
+            app:layout_constraintBottom_toTopOf="@id/btn_register"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/btn_kakao" />
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="회원 가입"
+            app:layout_constraintBottom_toBottomOf="@id/guide_bottom"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_google" />
+
 
         <TextView
             android:id="@+id/txtLink"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="로그인 시 개인 정보 처리 방침 및 이용 약관에 동의\n하신 것으로 간주 합니다."
+            android:text="로그인 시 개인 정보 처리 방침 및 이용 약관에 동의하신 것으로 간주 합니다."
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/guide_bottom" />
