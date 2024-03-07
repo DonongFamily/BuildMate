@@ -46,10 +46,12 @@ class LoginActivity : AppCompatActivity() {
 
         // TODO: Login, Logout Logic UUID 가 다름
         btnKakao.setOnClickListener {
-            userViewModel.addUserToDB(UserRequest("paul", "1111", "성현", "0"))
+            userViewModel.addUserToDB(UserRequest("paul", "1111", "성현", "0",
+                "https://avatar.maplestory.nexon.com/Character/180/FEPIOJCELHDHALOAPHDOGCJGCNNELEDFEBELCCPDHGDDDKHMDPFCKCOAGIBJMDNMONBCAONDPMJJBIKBJBBLJJKADFLNNCFPGDDLCHFEANGGNIHFEDHHFPJMLEKFLEONANMEFHDDKNOMCGBEDGLHKCOFGOJFKHLHDJLBMIHPHIEKDDFEJDPCEONLOACGJJNEIDJLFDCMPCAKJCAFFJPCHINHOPFOBMKKEHNLEBKMMBPPMELAEBEMBINAKJCCDIEL.png"))
         }
         btnGoogle.setOnClickListener { 
-            userViewModel.deleteUserToDB(UserRequest("paul", "1111", "성현", "0"))
+            userViewModel.deleteUserToDB(UserRequest("paul", "1111", "성현", "0",
+                "https://avatar.maplestory.nexon.com/Character/180/FEPIOJCELHDHALOAPHDOGCJGCNNELEDFEBELCCPDHGDDDKHMDPFCKCOAGIBJMDNMONBCAONDPMJJBIKBJBBLJJKADFLNNCFPGDDLCHFEANGGNIHFEDHHFPJMLEKFLEONANMEFHDDKNOMCGBEDGLHKCOFGOJFKHLHDJLBMIHPHIEKDDFEJDPCEONLOACGJJNEIDJLFDCMPCAKJCAFFJPCHINHOPFOBMKKEHNLEBKMMBPPMELAEBEMBINAKJCCDIEL.png"))
         }
         btnRegister.setOnClickListener {
             finish()

@@ -14,7 +14,8 @@ data class UserEntity(
     @ColumnInfo(name = "name") val name: String,
     @ColumnInfo(name = "id") val id: String,
     @ColumnInfo(name = "pw") val pw: String,
-    @ColumnInfo(name = "cash") val cash: String
+    @ColumnInfo(name = "cash") val cash: String,
+    @ColumnInfo(name = "imgPath") val imgPath: String
 ): Response<UserDto> {
 
     override fun toDto(): UserDto =
@@ -23,7 +24,8 @@ data class UserEntity(
             name = name,
             id = id,
             pw = pw,
-            cash = cash
+            cash = cash,
+            imgPath = imgPath
         )
 }
 
@@ -33,5 +35,6 @@ fun UserRequest.toEntity(): UserEntity =
         name = getName(),
         id = getId(),
         pw = getPw(),
-        cash = getCash()
+        cash = getCash(),
+        imgPath = getImgPath()
     )

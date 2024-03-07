@@ -25,7 +25,7 @@ class DBService(private val context: Context){
     fun addUser(userEntity: UserEntity): Flow<Unit> {
         val result = db.userDao().insert(userEntity).firstOrNull()
         result ?: throw UserException(UserErrorCode.INSERT_ERROR)
-        if(result != 1L) {
+        if(result <= 0L) {
             throw UserException(UserErrorCode.INSERT_ERROR)
         }
         return flow {

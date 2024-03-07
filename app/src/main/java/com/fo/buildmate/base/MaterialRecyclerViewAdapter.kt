@@ -36,7 +36,7 @@ class MaterialRecyclerViewAdapter : RecyclerView.Adapter<MaterialRecyclerViewAda
         fun bind(item: MaterialDto) {
             mBinding.apply {
                 root.setOnClickListener {
-
+                    
                 }
                 txtName.text = item.name
                 txtDetail.text = item.detail

@@ -8,6 +8,7 @@ import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.bumptech.glide.Glide
 import com.fo.buildmate.R
 import com.fo.buildmate.base.TabViewAdapter
 import com.fo.buildmate.databinding.ActivityMainBinding
@@ -61,6 +62,9 @@ class MainActivity : AppCompatActivity() {
     private fun setUser(user: UserDto) = with(mBinding.userProfile) {
         txtName.text = user.name
         txtCash.text = user.cash
+        Glide.with(this@MainActivity)
+            .load(user.imgPath)
+            .into(imgUserProfile)
     }
 
 

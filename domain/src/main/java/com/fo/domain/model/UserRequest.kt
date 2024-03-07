@@ -3,7 +3,7 @@ package com.fo.domain.model
 import com.fo.domain.errorcode.UserErrorCode
 import com.fo.domain.exception.UserException
 
-data class UserRequest(private val id: String, private val pw: String, private val name: String, private val cash: String){
+data class UserRequest(private val id: String, private val pw: String, private val name: String, private val cash: String, private val imgPath: String){
     fun getId(): String {
         return when {
             id.isEmpty() -> { throw UserException(UserErrorCode.REQUEST_ID_IS_EMPTY) }
@@ -26,4 +26,6 @@ data class UserRequest(private val id: String, private val pw: String, private v
     }
 
     fun getCash(): String = cash
+
+    fun getImgPath(): String = imgPath
 }
