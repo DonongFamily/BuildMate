@@ -5,4 +5,5 @@ import dagger.hilt.android.HiltAndroidApp
 
 @HiltAndroidApp
 class BuildMate: Application() {
+    val REQUEST_MAX_COUNT = 3
 }

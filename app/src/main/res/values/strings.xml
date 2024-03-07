@@ -14,4 +14,9 @@
 
     <!-- User Error Message -->
     <string name="USER_REQUEST_ID_IS_EMPTY">아이디 값이 비어 있습니다.</string>
+    <string name="USER_REQUEST_PW_IS_EMPTY">비밀번호 값이 비어 있습니다.</string>
+    <string name="USER_REQUEST_NAME_IS_EMPTY">이름이 비어 있습니다.</string>
+    <string name="USER_INSERT_ERROR">저장에 실패 했습니다.</string>
+    <string name="USER_DELETE_ERROR">삭제에 실패 했습니다.</string>
+    <string name="USER_SELECT_ERROR">호출에 실패 했습니다.</string>
 </resources>

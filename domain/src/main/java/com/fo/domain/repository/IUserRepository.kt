@@ -7,9 +7,9 @@ import kotlinx.coroutines.flow.Flow
 
 interface IUserRepository {
 
-    fun getUserFromDB(): Flow<List<UserDto>>
+    fun getUserFromDB(): Flow<UserDto>
 
-    fun addUserToDB(user: UserDto): Flow<Boolean>
+    fun addUserToDB(user: UserRequest): Flow<Unit>
 
-    fun deleteUserFromDB(user: UserDto): Flow<Boolean>
+    fun deleteUserFromDB(user: UserRequest): Flow<Unit>
 }

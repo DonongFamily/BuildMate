@@ -10,7 +10,10 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface UserDao {
     @Query("SELECT * FROM userentity")
-    fun getAll(): Flow<List<UserEntity>>
+    fun getAllUser(): List<UserEntity>
+
+    @Query("SELECT * FROM userentity LIMIT 1")
+    fun getUser(): List<UserEntity>
 
     @Insert
     fun insert(vararg userEntity: UserEntity): List<Long>

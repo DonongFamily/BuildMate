@@ -6,11 +6,15 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.core.content.ContextCompat
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.fo.buildmate.R
 import com.fo.buildmate.base.TabViewAdapter
 import com.fo.buildmate.databinding.ActivityMainBinding
 import com.fo.buildmate.model.Tab
-import com.fo.buildmate.vm.MainViewModel
+import com.fo.buildmate.ui.dialog.ConfirmDialog
+import com.fo.buildmate.vm.UserViewModel
+import com.fo.domain.model.UserDto
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
@@ -19,24 +23,53 @@ import dagger.hilt.android.AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private val mBinding: ActivityMainBinding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private val materialViewModel: MainViewModel by viewModels()
+    private val userViewModel: UserViewModel by viewModels()
+
+    private val _errorMessage = MutableLiveData<String>()
+    private val errorMessage: LiveData<String> = _errorMessage
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(mBinding.root)
 
         initMainBinding()
-        initMaterialViewModel()
+        initUserViewModel()
         initTab()
-        val intent = Intent(this@MainActivity, LoginActivity::class.java)
-        startActivity(intent)
+
+        errorMessage.observe(this@MainActivity) { message ->
+            ConfirmDialog(this@MainActivity, message).show()
+        }
     }
 
     private fun initMainBinding() = with(mBinding) {
-
+        root.setOnClickListener {
+            val intent = Intent(this@MainActivity, LoginActivity::class.java)
+            startActivity(intent)
+        }
     }
-    private fun initMaterialViewModel() = with(materialViewModel) {
+    private fun initUserViewModel() = with(userViewModel) {
+        user.observe(this@MainActivity) {
+            it?.let {
+                setUser(it)
+            } ?: run {
+                val intent = Intent(this@MainActivity, LoginActivity::class.java)
+                startActivity(intent)
+            }
+        }
+        errorMessage.observe(this@MainActivity) {
+            _errorMessage.postValue(it)
+        }
+    }
 
+    private fun setUser(user: UserDto) = with(mBinding.userProfile) {
+        txtName.text = user.name
+        txtCash.text = user.cash
+    }
+
+
+    override fun onStart() {
+        super.onStart()
+        userViewModel.getUserFromDB()
     }
 
     private fun initTab() {

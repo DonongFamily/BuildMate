@@ -12,20 +12,25 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
+
 @Module
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
     @Provides
+    @Singleton
     fun provideUserRepository(retrofitService: RetrofitService, dbService: DBService): IUserRepository {
         return UserRepository(retrofitService, dbService)
     }
 
     @Provides
+    @Singleton
     fun provideChatRepository(retrofitService: RetrofitService, dbService: DBService): IChatRepository {
         return ChatRepository(retrofitService, dbService)
     }
 
     @Provides
+    @Singleton
     fun provideMaterialRepository(retrofitService: RetrofitService, dbService: DBService): IMaterialRepository {
         return MaterialRepository(retrofitService, dbService)
     }
