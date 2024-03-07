@@ -6,8 +6,8 @@ import kotlinx.coroutines.flow.Flow
 
 class GetUserFromDBUseCase(
     private val userRepository: IUserRepository
-) : IUseCase<Unit, UserDto> {
+) : IUseCase<Unit, UserDto?> {
 
-    override suspend fun invoke(request: Unit): Flow<UserDto> =
+    override suspend fun invoke(request: Unit): Flow<UserDto?> =
         userRepository.getUserFromDB()
 }

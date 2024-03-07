@@ -13,7 +13,7 @@ interface UserDao {
     fun getAllUser(): List<UserEntity>
 
     @Query("SELECT * FROM userentity LIMIT 1")
-    fun getUser(): List<UserEntity>
+    fun getUser(): Flow<UserEntity?>
 
     @Insert
     fun insert(vararg userEntity: UserEntity): List<Long>

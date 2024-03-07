@@ -51,6 +51,9 @@ class LoginActivity : AppCompatActivity() {
         btnGoogle.setOnClickListener { 
             userViewModel.deleteUserToDB(UserRequest("paul", "1111", "성현", "0"))
         }
+        btnRegister.setOnClickListener {
+            finish()
+        }
     }
 
     private fun initUserViewModel() = with(userViewModel) {

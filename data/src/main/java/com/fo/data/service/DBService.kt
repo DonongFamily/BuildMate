@@ -19,13 +19,8 @@ class DBService(private val context: Context){
         ).build()
     }
 
-    fun getUser(): Flow<UserEntity> {
-        val result = db.userDao().getUser().firstOrNull()
-        result ?: throw UserException(UserErrorCode.SELECT_ERROR)
-        return flow {
-            emit(result)
-        }
-    }
+    fun getUser(): Flow<UserEntity?> =
+        db.userDao().getUser()
 
     fun addUser(userEntity: UserEntity): Flow<Unit> {
         val result = db.userDao().insert(userEntity).firstOrNull()

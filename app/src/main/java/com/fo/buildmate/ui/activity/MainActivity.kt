@@ -42,10 +42,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initMainBinding() = with(mBinding) {
-        root.setOnClickListener {
-            val intent = Intent(this@MainActivity, LoginActivity::class.java)
-            startActivity(intent)
-        }
+
     }
     private fun initUserViewModel() = with(userViewModel) {
         user.observe(this@MainActivity) {

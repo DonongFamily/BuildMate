@@ -12,9 +12,9 @@ import kotlinx.coroutines.flow.map
 class UserRepository(private val retrofitService: RetrofitService,
     private val dbService: DBService
 ): IUserRepository {
-    override fun getUserFromDB(): Flow<UserDto> =
+    override fun getUserFromDB(): Flow<UserDto?> =
         dbService.getUser().map {
-            it.toDto()
+            it?.toDto()
         }
 
     override fun addUserToDB(user: UserRequest): Flow<Unit> =

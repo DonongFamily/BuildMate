@@ -51,7 +51,7 @@ class UserViewModel @Inject constructor(
             } catch (e: Exception) {
                 when (e) {
                     is UserException -> {
-                        _user.postValue(null)
+                        _errorMessage.postValue(userErrorMapper.toErrorMessage(e.userErrorCode))
                     }
                 }
             }
