@@ -1,9 +1,11 @@
 package com.fo.buildmate.base
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.fo.buildmate.databinding.ItemMaterialBinding
+import com.fo.buildmate.ui.activity.MaterialGraphActivity
 import com.fo.domain.model.MaterialDto
 
 class MaterialRecyclerViewAdapter : RecyclerView.Adapter<MaterialRecyclerViewAdapter.MaterialRecyclerViewHolder>() {
@@ -36,7 +38,8 @@ class MaterialRecyclerViewAdapter : RecyclerView.Adapter<MaterialRecyclerViewAda
         fun bind(item: MaterialDto) {
             mBinding.apply {
                 root.setOnClickListener {
-                    
+                    val intent = Intent(root.context, MaterialGraphActivity::class.java)
+                    root.context.startActivity(intent)
                 }
                 txtName.text = item.name
                 txtDetail.text = item.detail
